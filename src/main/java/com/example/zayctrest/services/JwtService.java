@@ -17,8 +17,8 @@ import java.util.function.Function;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = "eyJhbGciOiJIUzUxMiJ9.eyJSb2xlIjoiQWRtaW4iLCJJc3N1ZXIiOiJJc3N1ZXIiLCJVc2VybmFtZSI6IkphdmFJblVzZSIsImV4cCI6MTY4NjI0MDI0NywiaWF0IjoxNjg2MjQwMjQ3fQ.VsjqY2T7iUzHQPTLkRh7C8q1auDbBIqLfMhQV2wX743Q9qNovAwwDifEydhXPoIVJ2xZ1aN0_oo2Llft9hHMFQ";
-    private static final int JWT_EXPIRATION_TIME_MILLIS = 1000 * 20; // срок действия токена - 20 минут
+    private static final String SECRET_KEY = "NTLQkNC/0L7QtNC4eGNnZGYyMzQ1MjM10L3QsNC80LjRjzcz0JLQu9Cw0LPQvtC9JDJhJDEwJFRsWWF0QVBoa0dCY3NUQ1hUck92aGVVdnVDMGZrVmN1QXFrdVpJVFJvcEVwMzk3bkVCVnQ20LXQv9GA0L7QvdC40YbQsDEzNdC10LzRi9C5";
+    private static final int JWT_EXPIRATION_TIME_MILLIS = 3 * 3600000; // срок действия токена - 3 часа
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -38,7 +38,7 @@ public class JwtService {
                 .parserBuilder()
                 .setSigningKey(getSignInKey())
                 .build()
-                .parseClaimsJwt(token)
+                .parseClaimsJws(token)
                 .getBody();
     }
 
